@@ -6,24 +6,27 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    computerSelection = getComputerChoice();
+    playerSelection = prompt("What is your choice? Paper, rock op scissors?");
+    playerSelection = playerSelection.toLowerCase();
 
     if (computerSelection == "rock" && playerSelection == "scissors") {
-        return ("You lost! Rock beats scissors.");
+        return ("You lost!");
     }
     else if (computerSelection == "rock" && playerSelection == "paper") {
-        return ("You win! Paper beats rock.");
+        return ("You win!");
     }
     else if (computerSelection == "paper" && playerSelection == "rock") {
-        return ("You lost! Paper beats rock.");
+        return ("You lost!");
     }
     else if (computerSelection == "paper" && playerSelection == "scissors") {
-        return ("You win! Scissors beats paper.");
+        return ("You win!");
     }
     else if (computerSelection == "scissors" && playerSelection == "rock") {
-        return ("You win! Rock beats scissors.");
+        return ("You win!");
     }
     else if (computerSelection == "scissors" && playerSelection == "paper") {
-        return ("You lost! Scissors beats paper.");
+        return ("You lost!");
     }
     else if (computerSelection == playerSelection) {
         return ("Tie!");
@@ -33,8 +36,36 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-computerSelection = getComputerChoice();
+function game() {
+    playerWin = 0;
+    computerWin = 0;
+    let playerSelection;
+    let computerSelection;
 
-playerSelection = (prompt("What is your choice? Paper, rock op scissors?")).toLowerCase();
+    for (let i = 0; i < 99; i++) {
+        let round = playRound(playerSelection, computerSelection);
 
-console.log(playRound(playerSelection, computerSelection));
+        if (round == "You win!") {
+            console.log(round);
+            playerWin++;
+        }
+        else if (round == "You lost!") {
+            console.log(round);
+            computerWin++;
+        }
+        else {
+            console.log(round);
+        }
+
+        if (playerWin == 3) {
+            console.log("YOU WON!");
+            break;
+        }
+        else if (computerWin == 3) {
+            console.log("YOU LOST!")
+            break;
+        }
+    }
+}
+
+game();
