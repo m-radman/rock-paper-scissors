@@ -1,71 +1,84 @@
+let computerSelection = getComputerChoice();
+const choices = document.querySelectorAll("button");
+const start = document.getElementById("start");
+start.addEventListener("click", () => game());
+let playerWin = 0;
+let computerWin = 0;
+
+document.getElementById("rock").disabled = true;
+document.getElementById("paper").disabled = true;
+document.getElementById("scissors").disabled = true;
+
+document.getElementById("new-game").addEventListener("click", () => {
+        playerWin = 0, computerWin = 0
+        document.getElementById("computer-score").textContent = `Computer: ${computerWin}`;
+        document.getElementById("player-score").textContent = `Player :${playerWin}`;
+        document.getElementById("rock").disabled = false;
+        document.getElementById("paper").disabled = false;
+        document.getElementById("scissors").disabled = false;
+    });
 
 function getComputerChoice() {
     let compChoice = ["rock", "paper", "scissors"];
     const choiceIndex = Math.floor(Math.random() * compChoice.length);
     return compChoice[choiceIndex];
-}
+};
 
 function playRound(playerSelection, computerSelection) {
     computerSelection = getComputerChoice();
-    playerSelection = prompt("What is your choice? Paper, rock op scissors?");
-    playerSelection = playerSelection.toLowerCase();
 
     if (computerSelection == "rock" && playerSelection == "scissors") {
-        return ("You lost!");
+        document.getElementById("info").textContent =("You lose!");
+       return document.getElementById("computer-score").textContent = `Computer: ${++computerWin}`;
     }
     else if (computerSelection == "rock" && playerSelection == "paper") {
-        return ("You win!");
+        document.getElementById("info").textContent = ("You win!");
+        return document.getElementById("player-score").textContent = `Player :${++playerWin}`;
     }
     else if (computerSelection == "paper" && playerSelection == "rock") {
-        return ("You lost!");
+        document.getElementById("info").textContent = ("You lose!");
+        return document.getElementById("computer-score").textContent = `Computer: ${++computerWin}`;
     }
     else if (computerSelection == "paper" && playerSelection == "scissors") {
-        return ("You win!");
+        document.getElementById("info").textContent = ("You win!");
+        return document.getElementById("player-score").textContent = `Player :${++playerWin}`;
     }
     else if (computerSelection == "scissors" && playerSelection == "rock") {
-        return ("You win!");
+        document.getElementById("info").textContent = ("You win!");
+        return document.getElementById("player-score").textContent = `Player :${++playerWin}`;
     }
     else if (computerSelection == "scissors" && playerSelection == "paper") {
-        return ("You lost!");
+        document.getElementById("info").textContent = ("You lose!");
+        return document.getElementById("computer-score").textContent = `Computer: ${++computerWin}`;
     }
     else if (computerSelection == playerSelection) {
-        return ("Tie!");
-    }
-    else {
-        return ("Wrong input");
-    }
-}
+        return document.getElementById("info").textContent = ("Tie!");
+    };
+};
 
 function game() {
-    playerWin = 0;
-    computerWin = 0;
-    let playerSelection;
-    let computerSelection;
 
-    for (let i = 0; i < 99; i++) {
-        let round = playRound(playerSelection, computerSelection);
+    document.getElementById("rock").disabled = false;
+    document.getElementById("paper").disabled = false;
+    document.getElementById("scissors").disabled = false;
+    
+    choices.forEach((choice) => choice.addEventListener("click", () => { playRound(choice.id, computerSelection)
+    
+        if (playerWin == 5) {
+            document.getElementById("rock").disabled = true;
+            document.getElementById("paper").disabled = true;
+            document.getElementById("scissors").disabled = true;
 
-        if (round == "You win!") {
-            console.log(round);
-            playerWin++;
+            return document.getElementById("info").textContent = ("YOU WON!");
         }
-        else if (round == "You lost!") {
-            console.log(round);
-            computerWin++;
-        }
-        else {
-            console.log(round);
-        }
+        else if (computerWin == 5) {
+            document.getElementById("rock").disabled = true;
+            document.getElementById("paper").disabled = true;
+            document.getElementById("scissors").disabled = true;
 
-        if (playerWin == 3) {
-            console.log("YOU WON!");
-            break;
-        }
-        else if (computerWin == 3) {
-            console.log("YOU LOST!")
-            break;
-        }
-    }
-}
+            return document.getElementById("info").textContent = ("YOU LOST!")
+        };
+    
+    }));
 
-game();
+};
