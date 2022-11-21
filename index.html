@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="rock-paper-scissors.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>Rock-Paper-Scissors</title>
 </head>
+
 <body>
-    <button id="start">Start Game</button>
+    <div id="start-buttons">
+        <button id="start">Start Game</button>
+        <button id="new-game">Start New Game</button>
+    </div>
+    <img src="pics/man_vs_machine.jpg" alt="man-vs-machine" id="background">
     <div id="play-choice">
-        <button class="choice" id="rock">Rock</button>
-        <button class="choice" id="paper">Paper</button>
-        <button class="choice" id="scissors">Scissors</button>
+        <button class="choice" id="rock"><img src="pics/rock.png" alt="rock" id="rock-icon"></button>
+        <button class="choice" id="paper"><img src="pics/paper.png" alt="paper" id="paper-icon"></button>
+        <button class="choice" id="scissors"><img src="pics/scissors.png" alt="scissors" id="scissors-icon"></button>
     </div>
     <div id="display">
-        <div id="score-display">
-            <p id="player-score">Player: </p>
-            <p id="computer-score">Computer: </p>
-        </div>
         <p id="info"></p>
+        <div id="score-display">
+            <p id="computer-score">Computer: </p>
+            <p id="player-score">Player: </p>
+        </div>
     </div>
-    <button id="new-game">Start New Game</button>
 </body>
+
 </html>

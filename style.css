@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: navy;
+}
+
+#start-buttons {
+    margin: 0 30%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+#start,
+#new-game {
+    background-color: darksalmon;
+    color: navy;
+    border: 1px solid navy;
+    border-radius: 3px;
+    font-size: 21px;
+    padding: 10px;
+}
+
+#play-choice {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.choice {
+    border: 2px darksalmon solid;
+    border-radius: 2px;
+}
+
+#rock-icon,
+#paper-icon,
+#scissors-icon {
+    width: 100px;
+    height: auto;
+}
+
+#display {
+    padding: 15px;
+    background-color: rgba(5, 5, 75, 0.687);
+    margin: 0 25%;
+}
+
+#score-display {
+    display: flex;
+    color: darksalmon;
+    justify-content: space-evenly;
+    padding: 5px;
+    font-size: 26px;
+}
+
+#info {
+    text-align: center;
+    color: darksalmon;
+    font-size: 33px;
+    font-weight: 600;
+}
+
+#background {
+    width: 500px;
+    height: auto;
+    margin: 10px auto;
+    box-sizing: border-box;
+    border: 12px rgba(5, 5, 75, 0.687) solid;
+    border-radius: 2px;
+}
